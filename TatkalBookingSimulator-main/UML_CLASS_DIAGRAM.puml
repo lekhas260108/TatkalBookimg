@@ -1,0 +1,28 @@
+@startuml
+package model {
+ class Train { -trainNumber; -trainName; -coaches; +matchesRoute(); +getTotalAvailableSeats() }
+ class Coach { -coachNumber; -coachType; -seats; +getAvailableSeat(); +getAvailableSeatCount() }
+ class Seat { -seatNumber; -available; +book(); +release() }
+ class Passenger { -passengerId; -name; -age; -gender }
+ class Booking { -bookingId; -passenger; -train; -seat; -status; +assignSeat(); +setStatus() }
+ class Ticket { -pnrNumber; -booking; -bookingDate; +generateTicketSummary() }
+ enum BookingStatus { CONFIRMED; RAC; WAITING; CANCELLED }
+}
+package engine {
+ class TrainRepository { +getAllTrains(); +searchTrains(); +findTrainByNumber() }
+ class BookingEngine { +bookTicket(); +cancelBooking(); +runConcurrencyDemo(); +getAllBookings() }
+ class WaitingList { +add(); +removeNextForTrain(); +removeBooking() }
+}
+package exception { class SeatNotAvailableException }
+Train "1" *-- "many" Coach
+Coach "1" *-- "many" Seat
+Booking --> Passenger
+Booking --> Train
+Booking --> Seat
+Booking --> BookingStatus
+Ticket --> Booking
+TrainRepository o-- Train
+BookingEngine --> WaitingList
+BookingEngine --> Booking
+BookingEngine ..> SeatNotAvailableException
+@enduml

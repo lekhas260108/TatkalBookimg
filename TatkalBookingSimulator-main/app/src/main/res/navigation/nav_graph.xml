@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph" app:startDestination="@id/FirstFragment">
+    <fragment android:id="@+id/FirstFragment" android:name="com.example.tatkalbookingsimulator.FirstFragment" android:label="Train Search" tools:layout="@layout/fragment_first">
+        <action android:id="@+id/action_FirstFragment_to_SecondFragment" app:destination="@id/SecondFragment" />
+        <action android:id="@+id/action_FirstFragment_to_OperationsFragment" app:destination="@id/OperationsFragment" />
+    </fragment>
+    <fragment android:id="@+id/SecondFragment" android:name="com.example.tatkalbookingsimulator.SecondFragment" android:label="Available Trains" tools:layout="@layout/fragment_second">
+        <action android:id="@+id/action_SecondFragment_to_FirstFragment" app:destination="@id/FirstFragment" />
+        <action android:id="@+id/action_SecondFragment_to_PassengerFragment" app:destination="@id/PassengerFragment" />
+    </fragment>
+    <fragment android:id="@+id/PassengerFragment" android:name="com.example.tatkalbookingsimulator.PassengerFragment" android:label="Passenger Details">
+        <action android:id="@+id/action_PassengerFragment_to_TicketConfirmationFragment" app:destination="@id/TicketConfirmationFragment" />
+    </fragment>
+    <fragment android:id="@+id/TicketConfirmationFragment" android:name="com.example.tatkalbookingsimulator.TicketConfirmationFragment" android:label="Ticket Confirmation">
+        <action android:id="@+id/action_TicketConfirmationFragment_to_FirstFragment" app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment android:id="@+id/OperationsFragment" android:name="com.example.tatkalbookingsimulator.OperationsFragment" android:label="Booking Operations">
+        <action android:id="@+id/action_OperationsFragment_to_FirstFragment" app:destination="@id/FirstFragment" />
+    </fragment>
+</navigation>
